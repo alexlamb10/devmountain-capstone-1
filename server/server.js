@@ -20,7 +20,7 @@ app.post('/seed', seed)
 //create a user log in and send to database
 app.post('/users', createLogIn)
 
-//let user log in by comparing password to password has
+//let user log in by comparing password to password hash
 app.post('/users/:username', logInUser)
 
 app.listen(port, () => {

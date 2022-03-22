@@ -87,10 +87,11 @@ table {
     font-size: 30px;
 }
 
-.header {
+.title {
     display: flex;
     margin: 3%;
-    padding-bottom: 2%;
+    padding-bottom: 1vh;
+    font-size: 25pt;
     justify-content: center;
     width: 30%;
     border-bottom: 1px solid #073B46;
@@ -122,7 +123,20 @@ h3 {
     color:#073B46;
     font-size: 22px;
 }
-input, #submit-profile, #log-in-btn{
+input, #submit-profile, #log-in-btn, #submit-new-trip{
     margin: 1vh;
     background-color: beige;
+}
+
+#new-trip-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 65vh;
+    width: 40%;    
+    background-image: url('world-flags.jpg');
+    background-repeat: no-repeat;
+    background-size: 100vh;
+    border-radius: 10px;
 }

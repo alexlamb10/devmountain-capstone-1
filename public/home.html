@@ -18,7 +18,18 @@
     </div>
     <span onclick="openNav()" id="sideBarBtn">&#9776;</span>
 
-    <h1 class="header">Home</h1>
+    <h1 class="title">Add new Trip</h1>
+
+    <section id="new-trip-section">
+
+        <input type="text" id="city" placeholder="City">
+        <input type="text" id="state" placeholder="State/Providence">
+        <input type="text" id="country" placeholder="Country">
+        <input type="number" id="num-of-days" placeholder="Number of days">
+        <input type="text" id="activities" placeholder="Activities">
+        <input type="number" id="cost" placeholder="Approximate cost">
+        <button id="submit-new-trip">Submit Trip</button>
+    </section>
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="main.js"></script>
