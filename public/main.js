@@ -45,7 +45,7 @@ function createUser (){
 }
 
 function logIn () {
-    console.log('button works')
+    //Get username/password to send to back end
     loginUsername = loginUsername.value
     body = {
         password: loginPassword.value
@@ -53,13 +53,17 @@ function logIn () {
 
     axios.post(`${baseURL}/users/${loginUsername}`, body)
         .then(res => {
-            alert(res.data)
+            //alert user log in was successful then set id for 
+            alert(res.data.message)
+
+            document.getElementsByClassName('logOut').id = res.data.userId
+            
         })
         .catch(err => {
-            alert('Incorrect password, please try again.')
+            alert('Account Credentials do not match.')
         })
-    loginUsername.value = ''
-    loginPassword.value = ''
+        loginUsername.value = ''
+        loginPassword.value = ''
 }
 
 submitNewProfile.addEventListener('click', createUser)

@@ -13,10 +13,14 @@ app.use(cors())
 
 let port = 4400
 
+
+//Seed database
 app.post('/seed', seed)
 
+//create a user log in and send to database
 app.post('/users', createLogIn)
 
+//let user log in by comparing password to password has
 app.post('/users/:username', logInUser)
 
 app.listen(port, () => {

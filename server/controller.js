@@ -16,22 +16,16 @@ let users = []
 module.exports = {
     seed: (req, res) => {
         sequelize.query(`
-        drop table if exists authentication;
         drop table if exists trip;
         drop table if exists users;
 
             create table users (
                 user_id SERIAL PRIMARY KEY,
-                username VARCHAR(255)
+                name VARCHAR(255),
+                username VARCHAR(255),
+                password TEXT
             );
             
-            create table authentication (
-                auth_id SERIAL PRIMARY KEY,
-                passowrd TEXT,
-                user_id INT,
-                FOREIGN KEY (user_id) REFERENCES users(user_id)
-            );
-
             create table trip (
                 trip_id SERIAL PRIMARY KEY,
                 city VARCHAR(255),
@@ -44,8 +38,8 @@ module.exports = {
                 completed BOOLEAN,
                 start_date DATE,
                 end_date DATE,
-                user_id INT,
-                FOREIGN KEY (user_id) REFERENCES users(user_id)
+                user_id INT REFERENCES users(user_id)
+                
             );
         `).then(() => {
             console.log('DB seeded!')
@@ -64,26 +58,41 @@ module.exports = {
             passwordHash
         }
         //push new user to users array
-        users.push(newBody)
+        sequelize.query(`
+            INSERT INTO users (name, username, password)
+                VALUES ('${newUser}', '${username}', '${passwordHash}');
+
+        `)
+        //Push message to front end stating account was created
         res.status(200).send(`Account creation comlete! Please sign in.`)
     },
     
     logInUser: (req, res) => {
-        const salt = bcryptjs.genSaltSync(5)
-        const passwordHash = bcryptjs.hashSync('123', salt)
 
+        //Get username and password from front end
         let {password: passwordFromUser} = req.body
         let user = req.params.username
+        
+        //Get password from back end that matches username entered
+        sequelize.query(`SELECT password, user_id FROM users WHERE username = '${user}';`)
+        .then(dbRes => {                
+                const passwordHash = dbRes[0][0].password
+                //Compare password to hash
+                bcryptjs.compare(passwordFromUser, passwordHash, function(err, isMatch){
+                    if (err){
+                        throw err
+                    } else if(!isMatch) {
+                        res.sendStatus(400)
+                    } else {
+                        //Send message and user_id to store on front end
+                        res.status(200).send({message: `Welcome ` + user,
+                                                userId: dbRes[0][0].user_id})
+                    }
+                })
+            })
 
-        bcryptjs.compare(passwordFromUser, passwordHash, function(err, isMatch){
-            if (err){
-                throw err
-            } else if(!isMatch) {
-                res.sendStatus(400)
-            } else {
-                res.status(200).send(`Welcome ` + user)
-            }
-        })
+            
+
         
         
     }
