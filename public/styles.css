@@ -54,7 +54,7 @@ table {
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: #111;
+    background-image: url('sideWorldMap.jpg');
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 60px;
@@ -63,8 +63,9 @@ table {
 .sideNav  a {
     padding: 8px 8px 8px 32px;
     text-decoration: none;
-    font-size: 25px;
-    color: #818181;
+    font-size: 22px;
+    color: black;
+    font-weight: bold;
     display: block;
     transition: 0.3s;
 }
@@ -81,6 +82,47 @@ table {
 #sideBarBtn {
     position: absolute;
     top: 0;
+    left: 0;
     padding: 1vh;
     font-size: 30px;
+}
+
+.header {
+    display: flex;
+    margin: 3%;
+    padding-bottom: 2%;
+    justify-content: center;
+    width: 30%;
+    border-bottom: 1px solid #073B46;
+    color: #073B46;
+}
+
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: beige;
+}
+
+
+.log-in-boxes {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2vh;
+    width: 40%;
+    border: 1px solid;
+    border-radius: 10px;
+    background-image: url('worldMap.jpg');
+}
+
+h3 {
+    margin: 2vh;
+    color:#073B46;
+    font-size: 22px;
+}
+input, #submit-profile, #log-in-btn{
+    margin: 1vh;
+    background-color: beige;
 }
