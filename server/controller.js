@@ -32,7 +32,6 @@ module.exports = {
                 state VARCHAR(255),
                 country VARCHAR(255),
                 num_of_days INT,
-                time_of_year VARCHAR(20),
                 activities TEXT,
                 est_cost INT,
                 completed BOOLEAN,
@@ -75,8 +74,14 @@ module.exports = {
         
         //Get password from back end that matches username entered
         sequelize.query(`SELECT password, user_id FROM users WHERE username = '${user}';`)
-        .then(dbRes => {                
-                const passwordHash = dbRes[0][0].password
+        .then(dbRes => {    
+                const userinfo = dbRes[0][0];
+
+                // if(!user || !user.user_id) {
+                //     res.status(500).send({ message: 'User not found'})
+                // }
+
+                const passwordHash = userinfo.password
                 //Compare password to hash
                 bcryptjs.compare(passwordFromUser, passwordHash, function(err, isMatch){
                     if (err){
@@ -86,14 +91,19 @@ module.exports = {
                     } else {
                         //Send message and user_id to store on front end
                         res.status(200).send({message: `Welcome ` + user,
-                                                userId: dbRes[0][0].user_id})
+                                                userId: userinfo.user_id})
                     }
                 })
             })
+    },
+    createTrip: (req, res) => {
+        console.log(req.body)
+        let {city, state, country, days, activities, cost, userId} = req.body
 
-            
-
-        
-        
+        sequelize.query(`
+            INSERT INTO trip(city, state, country, num_of_days, activities, est_cost, completed, user_id)
+                VALUES ('${city}', '${state}', '${country}', '${days}', '${activities}', '${cost}', false, ${userId})
+        `)
+        res.status(200).send('Trip added to your wishlist!')
     }
 }

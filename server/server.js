@@ -6,7 +6,7 @@ const{SERVER_PORT} = process.env
 
 const app = express()
 
-let {createLogIn, logInUser, seed} = require('./controller')
+let {createLogIn, logInUser, seed, createTrip} = require('./controller')
 
 app.use(express.json())
 app.use(cors())
@@ -21,7 +21,13 @@ app.post('/seed', seed)
 app.post('/users', createLogIn)
 
 //let user log in by comparing password to password hash
+// look up how to catch the error from the login function, and then return a server error (500)
 app.post('/users/:username', logInUser)
+
+
+//Create trip, send trip info to back end
+app.post('/trips', createTrip)
+
 
 app.listen(port, () => {
     console.log(`server is listening on port ${SERVER_PORT}`)

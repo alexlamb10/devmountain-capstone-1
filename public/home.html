@@ -10,11 +10,10 @@
 <body>
     <div id="sideNavDiv" class="sideNav">
         <a href="javascript:void(0)" class="closeBtn" onclick="closeNav()">&times;</a>
-        <a href="log-in.html" class="sidePanel">Log in</a>
         <a href="home.html" class="sidePanel">Home</a>
         <a href="wishlist.html" class="sidePanel">Travel Wishlist</a>
         <a href="traveled-list.html" class="sidePanel">Previously Traveled</a>
-        <a href="log-in.html" class="logOut">Log Out</a>
+        <a class="log-out">Log Out</a>
     </div>
     <span onclick="openNav()" id="sideBarBtn">&#9776;</span>
 
@@ -30,8 +29,12 @@
         <input type="number" id="cost" placeholder="Approximate cost">
         <button id="submit-new-trip">Submit Trip</button>
     </section>
+    <section id="return-message">
+        <aside class="message"></aside>
+    </section>
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="home.js"></script>
     <script src="main.js"></script>
 </body>
 </html>
