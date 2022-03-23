@@ -177,13 +177,18 @@ button:hover{
 }
 
 .displayRows, .hide {
-    height: 7vh;
+    height: auto;
+    min-height: 7vh;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
     border-bottom: 1px solid white;
 }
 
+#plan {
+    margin: 1vh 0;
+    width: 20%;
+}
 
 .show{
     display: flex;

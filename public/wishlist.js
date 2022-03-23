@@ -35,7 +35,7 @@ function display(items){
         <h5>State: ${state}</h5>
         <h5>Country: ${country}</h5>
         <h5>Trip length: ${num_of_days}</h5>
-        <h5>Plan: ${activities}</h5>
+        <h5 id="plan">Plan: ${activities}</h5>
         <h5>my estimated cost: ${est_cost}</h5> `
 
         secondRow.style.display = 'none'

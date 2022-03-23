@@ -26,7 +26,6 @@ checkForLogin();
 
 function addNewTrip() {
     let userId = localStorage.getItem('userId');
-    console.log('buttons works');
     let body = {
         city: cityInput.value,
         state: stateInput.value,
