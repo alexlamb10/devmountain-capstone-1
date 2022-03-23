@@ -71,6 +71,10 @@ table {
     display: block;
     transition: 0.3s;
 }
+a:hover{
+    transform: scale(1.1);
+    color: #073B46;
+}
 
 .sideNav .closeBtn {
     position: absolute;
@@ -130,6 +134,14 @@ input, #submit-profile, #log-in-btn, #submit-new-trip{
     background-color: beige;
 }
 
+button{
+    cursor: pointer;
+}
+button:hover{
+    transform: scale(.9);
+    color:#073B46;
+}
+
 #new-trip-section {
     display: flex;
     flex-direction: column;
@@ -141,4 +153,23 @@ input, #submit-profile, #log-in-btn, #submit-new-trip{
     background-repeat: no-repeat;
     background-size: 100vh;
     border-radius: 10px;
+}
+
+.display-trips{
+    width: 75%;
+    text-align: center; 
+    justify-content: center;
+    background-color:rgba(7, 59, 70, 80%);
+    color: beige;   
+    
+}
+td{
+    height: 5vh;
+    padding-top: 1.5vh;
+    border-bottom: 1px solid white;
+    
+}
+
+td > button {
+    background-color: beige;
 }

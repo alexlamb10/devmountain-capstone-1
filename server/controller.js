@@ -105,5 +105,16 @@ module.exports = {
                 VALUES ('${city}', '${state}', '${country}', '${days}', '${activities}', '${cost}', false, ${userId})
         `)
         res.status(200).send('Trip added to your wishlist!')
+    },
+    returnPlannedTrips: (req, res) => {
+        let userId = req.params.trip
+
+        sequelize.query(`
+            SELECT city, state, country, num_of_days, activities, est_cost FROM trip
+                WHERE user_id = ${userId} AND completed = false
+        `) 
+        .then(dbRes => {
+            res.status(200).send(dbRes[0])
+        })
     }
 }
