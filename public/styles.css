@@ -172,10 +172,19 @@ button:hover{
     color: beige;
 }
 
+.hide{
+    background-color: rgb(39, 104, 117);
+}
+
 .displayRows, .hide {
     height: 7vh;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
     border-bottom: 1px solid white;
+}
+
+
+.show{
+    display: flex;
 }

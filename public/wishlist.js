@@ -14,17 +14,18 @@ let tripSection = document.querySelector('.display-trips')
 
 //display items on screen
 function display(items){
+    count=1
     tripSection.innerHTML = ''
     for(let i = 0; i < items.length; i++){
-        // let openSymbol = &vArr;
         let {city, state, country, num_of_days, activities, est_cost, trip_id} = items[i]
         let row = document.createElement('div')   
         let secondRow = document.createElement('div')  
         row.className = 'displayRows'
         secondRow.className = 'hide'
+        secondRow.id = `hide${count}`
         
         row.innerHTML = `
-         <button onclick="">&vArr;</button> 
+         <button onclick="showMore(event)" id="${count}">&vArr;</button> 
         <h3 id="city-display">${city}</h3>
         <button>Delete</button>
         <button onclick="markAsComplete(event)" id="${trip_id}">Mark as complete</button>
@@ -41,6 +42,7 @@ function display(items){
 
         tripSection.appendChild(row)
         tripSection.appendChild(secondRow)
+        count++
     } 
 
 
@@ -81,4 +83,17 @@ function markAsComplete (event) {
 
 for(let i = 0; i < completeBtns.length; i++){
     completeBtns[i].addEventListener('click', markAsComplete)
+}
+
+function showMore(event) {
+    let button = event.target.id
+
+    let showDiv = document.getElementById(`hide${button}`)
+
+    if(showDiv.style.display === 'none'){
+        showDiv.style.display = 'flex'
+    }else{
+        showDiv.style.display = 'none'
+    }
+
 }
