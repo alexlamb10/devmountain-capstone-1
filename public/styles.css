@@ -156,20 +156,26 @@ button:hover{
 }
 
 .display-trips{
-    width: 75%;
+    width: 85%;
     text-align: center; 
     justify-content: center;
     background-color:rgba(7, 59, 70, 80%);
     color: beige;   
     
 }
-td{
-    height: 5vh;
-    padding-top: 1.5vh;
-    border-bottom: 1px solid white;
-    
+
+.displayRows > button {
+    background-color: beige;
 }
 
-td > button {
-    background-color: beige;
+#city-display {
+    color: beige;
+}
+
+.displayRows, .hide {
+    height: 7vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    border-bottom: 1px solid white;
 }

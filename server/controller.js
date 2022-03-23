@@ -110,11 +110,22 @@ module.exports = {
         let userId = req.params.trip
 
         sequelize.query(`
-            SELECT city, state, country, num_of_days, activities, est_cost FROM trip
+            SELECT city, state, country, num_of_days, activities, est_cost, trip_id FROM trip
                 WHERE user_id = ${userId} AND completed = false
         `) 
         .then(dbRes => {
             res.status(200).send(dbRes[0])
         })
+    },
+    markComplete: (req, res) => {
+        let {user, tripId} = req.body
+        sequelize.query(`
+            UPDATE trip
+            SET completed = true
+            WHERE trip_id = ${tripId} AND user_id = ${user};
+        `)
+            .then(dbRes => {
+                res.status(200).send('Trip updated!')
+            })
     }
 }

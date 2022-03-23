@@ -6,7 +6,7 @@ const{SERVER_PORT} = process.env
 
 const app = express()
 
-let {createLogIn, logInUser, seed, createTrip, returnPlannedTrips} = require('./controller')
+let {createLogIn, logInUser, seed, createTrip, returnPlannedTrips, markComplete} = require('./controller')
 
 app.use(express.json())
 app.use(cors())
@@ -30,6 +30,9 @@ app.post('/trips', createTrip)
 
 //return planned trips to wishlist.js
 app.get('/trips/:trip', returnPlannedTrips)
+
+//mark a trip as complete on the wishlist page
+app.put('/updateTrips', markComplete)
 
 
 app.listen(port, () => {
