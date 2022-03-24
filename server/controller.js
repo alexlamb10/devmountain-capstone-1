@@ -73,14 +73,9 @@ module.exports = {
         let user = req.params.username
         
         //Get password from back end that matches username entered
-        sequelize.query(`SELECT password, user_id FROM users WHERE username = '${user}';`)
+        sequelize.query(`SELECT password, user_id, username FROM users WHERE username = '${user}';`)
         .then(dbRes => {    
                 const userinfo = dbRes[0][0];
-
-                // if(!user || !user.user_id) {
-                //     res.status(500).send({ message: 'User not found'})
-                // }
-
                 const passwordHash = userinfo.password
                 //Compare password to hash
                 bcryptjs.compare(passwordFromUser, passwordHash, function(err, isMatch){
@@ -95,6 +90,7 @@ module.exports = {
                     }
                 })
             })
+            .catch(err => res.sendStatus(500))
     },
     createTrip: (req, res) => {
         console.log(req.body)

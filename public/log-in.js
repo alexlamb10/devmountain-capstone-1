@@ -52,11 +52,11 @@ function createUser (){
 
 function logIn () {
     //Get username/password to send to back end
-    loginUsername = loginUsername.value
+    let username = loginUsername.value
     body = {
         password: loginPassword.value
     }
-    axios.post(`${baseURL}/users/${loginUsername}`, body)
+    axios.post(`${baseURL}/users/${username}`, body)
         .then(res => {
             //alert user log in was successful then set id for 
             alert(res.data.message)
@@ -67,13 +67,16 @@ function logIn () {
             
         })
         .catch(err => {
-            // const message = err.message || '';
-            console.log(err.error.message);
-            // alert(err)
+            let error = err.message
+            if(error.includes('400')){
+                alert('Incorrect password, please try again')
+            }else if(error.includes('500')){
+                alert('User not found')
+            }
         })
         loginUsername.value = ''
         loginPassword.value = ''
-}
+    }
 
 submitNewProfile.addEventListener('click', createUser)
 loginBtn.addEventListener('click', logIn)
