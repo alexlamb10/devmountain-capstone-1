@@ -20,7 +20,6 @@ function display(items){
         let {city, state, country, num_of_days, activities, trip_id} = items[i]
         let completedRow = document.createElement('div')   
         let completedSecondRow = document.createElement('div')  
-        console.log(city, state, country, num_of_days, activities, trip_id)
 
         completedRow.className = 'displayRows'
         completedSecondRow.className = 'hide'
@@ -101,3 +100,20 @@ function deleteTrip(event) {
         })
 
 }
+
+// Filter trips
+let option = document.getElementById('filter')
+let submitOption = document.getElementById('submit-filter')
+
+function filter() {
+    let user = localStorage.getItem('userId')
+    let completed = true
+    
+
+    axios.get(`${baseURL}/filteredTrips/?user=${user}&complete=${completed}&filter=${option.value}`)
+    .then(res => {
+        display(res.data)
+    })
+}
+
+submitOption.addEventListener('click',filter)

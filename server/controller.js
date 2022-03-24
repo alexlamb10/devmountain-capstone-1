@@ -151,5 +151,64 @@ module.exports = {
             //Return database response saying trip was deleted
             res.status(200).send('Trip deleted!')
         })
+    },
+
+    filterTrips: (req, res) => {
+        let info = req.query
+        if(info.filter === 'Price ascending'){
+            sequelize.query(`
+            SELECT city, state, country, num_of_days, activities, trip_id, est_cost FROM trip
+                WHERE user_id = ${info.user} AND completed = ${info.complete}
+                ORDER BY est_cost
+        `) 
+        .then(dbRes => {
+            res.status(200).send(dbRes[0])
+        })
+        }else if(info.filter === 'Price descending'){
+            sequelize.query(`
+            SELECT city, state, country, num_of_days, activities, trip_id, est_cost FROM trip
+                WHERE user_id = ${info.user} AND completed = ${info.complete}
+                ORDER BY est_cost DESC
+        `) 
+        .then(dbRes => {
+            res.status(200).send(dbRes[0])
+        })
+        }else if(info.filter === 'Number of Days ascending'){
+            sequelize.query(`
+            SELECT city, state, country, num_of_days, activities, trip_id, est_cost FROM trip
+                WHERE user_id = ${info.user} AND completed = ${info.complete}
+                ORDER BY num_of_days 
+        `) 
+        .then(dbRes => {
+            res.status(200).send(dbRes[0])
+        })
+        }else if(info.filter === 'Number of Days descending'){
+            sequelize.query(`
+            SELECT city, state, country, num_of_days, activities, trip_id, est_cost FROM trip
+                WHERE user_id = ${info.user} AND completed = ${info.complete}
+                ORDER BY num_of_days DESC
+        `) 
+        .then(dbRes => {
+            res.status(200).send(dbRes[0])
+        })
+        }else if(info.filter === 'City A-Z'){
+            sequelize.query(`
+            SELECT city, state, country, num_of_days, activities, trip_id, est_cost FROM trip
+                WHERE user_id = ${info.user} AND completed = ${info.complete}
+                ORDER BY city 
+        `) 
+        .then(dbRes => {
+            res.status(200).send(dbRes[0])
+        })
+        }else if(info.filter === 'City Z-A'){
+            sequelize.query(`
+            SELECT city, state, country, num_of_days, activities, trip_id, est_cost FROM trip
+                WHERE user_id = ${info.user} AND completed = ${info.complete}
+                ORDER BY city DESC
+        `) 
+        .then(dbRes => {
+            res.status(200).send(dbRes[0])
+        })
+        }
     }
 }

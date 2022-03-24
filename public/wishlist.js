@@ -125,3 +125,20 @@ function deleteTrip(event) {
         })
 
 }
+// filter the list of trips
+
+let option = document.getElementById('filter')
+let submitOption = document.getElementById('submit-filter')
+
+function filter() {
+    let user = localStorage.getItem('userId')
+    let completed = false
+    
+
+    axios.get(`${baseURL}/filteredTrips/?user=${user}&complete=${completed}&filter=${option.value}`)
+    .then(res => {
+        display(res.data)
+    })
+}
+
+submitOption.addEventListener('click',filter)

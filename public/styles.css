@@ -142,6 +142,7 @@ h3 {
 input, #submit-profile, #log-in-btn, #submit-new-trip{
     margin: 1vh;
     background-color: beige;
+    border-radius: 5px;
 }
 
 button{
@@ -150,6 +151,18 @@ button{
 button:hover{
     transform: scale(.9);
     color:rgb(7, 59, 70);
+}
+
+#filter-box {
+    display: flex;
+    justify-content: flex-end;
+    width: 80%;
+}
+#submit-filter, #filter{
+    margin: 1vh;
+    background-color: rgb(39, 104, 117);
+    color: beige;
+    border-radius: 5px;
 }
 
 #new-trip-section {
@@ -170,7 +183,7 @@ button:hover{
     text-align: center; 
     justify-content: center;
     color: beige;   
-    
+    margin-top: 3vh;
 }
 
 .displayRows > button{
