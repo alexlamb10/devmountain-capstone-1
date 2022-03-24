@@ -55,7 +55,15 @@ function traveledList() {
     axios.get(`${baseURL}/completedTrips/${user}`)
     .then(res => {
         
-        display(res.data)
+        if(res.data.length >= 1){
+            display(res.data)
+        }else{
+            let noTrip = document.createElement('h3')
+
+            noTrip.textContent = `No trips to display, Let's go travel!`
+
+            completedTripSection.appendChild(noTrip)
+        }
     })
     
 }
