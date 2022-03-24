@@ -13,7 +13,14 @@ const baseURL = 'http://localhost:4400'
 // create user log in
 
 function createUser (){
+    let capital = false
     
+    for(let i = 0; i < newPassword.value.length; i++){
+        let char = newPassword.value[i]
+        if(char === char.toUpperCase()){
+            capital = true
+        }
+    }
 
     let body = {
         newUser: nameInput.value,
@@ -21,13 +28,20 @@ function createUser (){
         password: newPassword.value
     }
     //Check password to see if they match before sending user info to back end
-    if(newPassword.value === confirmPassword.value){
-        axios.post(`${baseURL}/users`, body)
-            .then(res => {
-                alert(res.data)
-            })
-    } else {
-        alert('Passwords must match')
+    if(newPassword.value.length < 8 || newPassword.value.length > 20){
+        alert('Password must be between 8-20 characters')
+    }else if(capital === false){
+        alert('Password must contain at least 1 capital!')
+    }else{
+        if(newPassword.value === confirmPassword.value){
+            axios.post(`${baseURL}/users`, body)
+                .then(res => {
+                    alert(res.data)
+                })
+        } else {
+            alert('Passwords must match')
+        }
+
     }
 
     nameInput.value = ''
@@ -42,7 +56,6 @@ function logIn () {
     body = {
         password: loginPassword.value
     }
-
     axios.post(`${baseURL}/users/${loginUsername}`, body)
         .then(res => {
             //alert user log in was successful then set id for 
@@ -64,3 +77,18 @@ function logIn () {
 
 submitNewProfile.addEventListener('click', createUser)
 loginBtn.addEventListener('click', logIn)
+
+
+let login = document.getElementById('create-profile')
+let passwordRequirements = document.getElementById('password-req')
+passwordRequirements.style.display = 'none'
+
+function passwordReq () {
+    passwordRequirements.style.display = 'block'
+}
+
+function removeReq () {
+    passwordRequirements.style.display = 'none'
+}
+newPassword.addEventListener('mouseover', passwordReq)
+newPassword.addEventListener('mouseout', removeReq)

@@ -112,6 +112,9 @@ body{
     background-color: beige;
 }
 
+#create-profile-text{
+    margin-top: 15vh;
+}
 
 .log-in-boxes {
     display: flex;
@@ -124,6 +127,13 @@ body{
     background-image: url('worldMap.jpg');
 }
 
+#password-req{
+    color:#073B46;
+    background-color: beige;
+    width: 45%;
+    border-radius: 20px;
+    text-align: center;
+}
 h3 {
     margin: 2vh;
     color:#073B46;
