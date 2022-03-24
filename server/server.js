@@ -6,7 +6,7 @@ const{SERVER_PORT} = process.env
 
 const app = express()
 
-let {createLogIn, logInUser, seed, createTrip, returnPlannedTrips, markComplete, returnCompletedTrips} = require('./controller')
+let {createLogIn, logInUser, seed, createTrip, returnPlannedTrips, markComplete, returnCompletedTrips, deleteTrip} = require('./controller')
 
 app.use(express.json())
 app.use(cors())
@@ -37,6 +37,8 @@ app.put('/updateTrips', markComplete)
 
 //return completed trips to traveled-list.js
 app.get('/completedTrips/:trip', returnCompletedTrips)
+
+app.delete('/deleteTrip', deleteTrip)
 
 app.listen(port, () => {
     console.log(`server is listening on port ${SERVER_PORT}`)

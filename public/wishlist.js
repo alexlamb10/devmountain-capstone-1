@@ -27,7 +27,7 @@ function display(items){
         row.innerHTML = `
          <button onclick="showMore(event)" id="${count}">&vArr;</button> 
         <h3 id="city-display">${city}</h3>
-        <button>Delete</button>
+        <button onclick="deleteTrip(event)" id="${trip_id}">Delete</button>
         <button onclick="markAsComplete(event)" id="${trip_id}">Mark as complete</button>
         `
         
@@ -61,9 +61,10 @@ function wishlist() {
 
 wishlist();
 
-let completeBtns = document.getElementsByClassName('complete-btn')
+// Expand to show more information
 
 function markAsComplete (event) {
+    //Get userId and tripId
     let user = localStorage.getItem('userId')
     let tripId = event.target.id
 
@@ -72,7 +73,7 @@ function markAsComplete (event) {
         tripId
     }
     
-
+    //send to backend to update
     axios.put(`${baseURL}/updateTrips`, body)
         .then(res => {
             alert(res.data)
@@ -81,9 +82,7 @@ function markAsComplete (event) {
 
 }
 
-for(let i = 0; i < completeBtns.length; i++){
-    completeBtns[i].addEventListener('click', markAsComplete)
-}
+
 
 function showMore(event) {
     let button = event.target.id
@@ -96,5 +95,24 @@ function showMore(event) {
     }else{
         showDiv.style.display = 'none'
     }
+
+}
+
+//Delete a trip from screen/database
+
+function deleteTrip(event) {
+    //get userId and tripId
+    let userId = localStorage.getItem('userId')
+    let tripId = event.target.id
+
+    let body = {
+        
+    }
+
+    axios.delete(`${baseURL}/deleteTrip`, {data: {userId, tripId}})
+        .then(res => {
+            alert(res.data)
+            wishlist()
+        })
 
 }

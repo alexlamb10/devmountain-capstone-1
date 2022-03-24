@@ -14,7 +14,6 @@ let completedTripSection = document.querySelector('.display-completed-trips')
 
 //display items on screen
 function display(items){
-    console.log(items)
     count=1
     completedTripSection.innerHTML = ''
     for(let i = 0; i < items.length; i++){
@@ -30,7 +29,7 @@ function display(items){
         completedRow.innerHTML = `
         <button onclick="showMore(event)" id="${count}">&vArr;</button>
         <h3 id="city-display">${city}</h3>
-        <button>Delete</button>
+        <button onclick="deleteTrip(event)" id="${trip_id}">Delete</button>
         `
         completedSecondRow.innerHTML = `
         <h5>State: ${state}</h5>
@@ -73,5 +72,24 @@ function showMore(event) {
     }else{
         showDiv.style.display = 'none'
     }
+
+}
+
+//Delete a trip from screen/database
+
+function deleteTrip(event) {
+    //get userId and tripId
+    let userId = localStorage.getItem('userId')
+    let tripId = event.target.id
+
+    let body = {
+        
+    }
+
+    axios.delete(`${baseURL}/deleteTrip`, {data: {userId, tripId}})
+        .then(res => {
+            alert(res.data)
+            traveledList()
+        })
 
 }

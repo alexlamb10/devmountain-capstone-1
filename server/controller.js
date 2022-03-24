@@ -99,7 +99,7 @@ module.exports = {
     createTrip: (req, res) => {
         console.log(req.body)
         let {city, state, country, days, activities, cost, userId} = req.body
-
+        //create new trip by adding trips to database
         sequelize.query(`
             INSERT INTO trip(city, state, country, num_of_days, activities, est_cost, completed, user_id)
                 VALUES ('${city}', '${state}', '${country}', '${days}', '${activities}', '${cost}', false, ${userId})
@@ -109,6 +109,7 @@ module.exports = {
     returnPlannedTrips: (req, res) => {
         let userId = req.params.trip
 
+        //get planned trips from database using sequelize
         sequelize.query(`
             SELECT city, state, country, num_of_days, activities, est_cost, trip_id FROM trip
                 WHERE user_id = ${userId} AND completed = false
@@ -119,6 +120,7 @@ module.exports = {
     },
     markComplete: (req, res) => {
         let {user, tripId} = req.body
+        //mark trips as completed using userId and tripId using sequelize
         sequelize.query(`
             UPDATE trip
             SET completed = true
@@ -130,14 +132,28 @@ module.exports = {
     },
     returnCompletedTrips: (req, res) => {
         let userId = req.params.trip
-        console.log(userId)
 
+        //get completed trips from database using sequelize
         sequelize.query(`
             SELECT city, state, country, num_of_days, activities, trip_id FROM trip
                 WHERE user_id = ${userId} AND completed = true
         `) 
         .then(dbRes => {
             res.status(200).send(dbRes[0])
+        })
+    },
+    deleteTrip: (req, res) => {
+        //get user Id and tripId from front end
+        let {userId, tripId} = req.body
+
+        // delete from database using sequelize
+        sequelize.query(`
+                DELETE FROM trip
+                WHERE trip_id = ${tripId} AND user_id = ${userId}
+        `)
+        .then(dbRes => {
+            //Return database response saying trip was deleted
+            res.status(200).send('Trip deleted!')
         })
     }
 }
