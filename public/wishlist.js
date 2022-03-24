@@ -34,7 +34,7 @@ function display(items){
         secondRow.innerHTML = `
         <h5>State: ${state}</h5>
         <h5>Country: ${country}</h5>
-        <h5>Trip length: ${num_of_days}</h5>
+        <h5>Trip length: ${num_of_days} days</h5>
         <h5 id="plan">Plan: ${activities}</h5>
         <h5>my estimated cost: ${est_cost}</h5> `
 
@@ -91,6 +91,7 @@ function showMore(event) {
     let showDiv = document.getElementById(`hide${button}`)
 
     if(showDiv.style.display === 'none'){
+        
         showDiv.style.display = 'flex'
     }else{
         showDiv.style.display = 'none'

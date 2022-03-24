@@ -139,7 +139,7 @@ button{
 }
 button:hover{
     transform: scale(.9);
-    color:#073B46;
+    color:rgb(7, 59, 70);
 }
 
 #new-trip-section {
@@ -155,17 +155,17 @@ button:hover{
     border-radius: 10px;
 }
 
-.display-trips{
+.display-trips, .display-completed-trips{
     width: 85%;
     text-align: center; 
     justify-content: center;
-    background-color:rgba(7, 59, 70, 80%);
     color: beige;   
     
 }
 
-.displayRows > button {
+.displayRows > button{
     background-color: beige;
+    
 }
 
 #city-display {
@@ -176,6 +176,10 @@ button:hover{
     background-color: rgb(39, 104, 117);
 }
 
+.displayRows{
+    background-color: rgba(7, 59, 70, 80%)
+}
+
 .displayRows, .hide {
     height: auto;
     min-height: 7vh;
@@ -183,6 +187,8 @@ button:hover{
     align-items: center;
     justify-content: space-evenly;
     border-bottom: 1px solid white;
+    border-bottom-right-radius: 10px ;
+    border-bottom-left-radius: 10px;
 }
 
 #plan {

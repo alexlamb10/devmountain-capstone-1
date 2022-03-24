@@ -125,7 +125,19 @@ module.exports = {
             WHERE trip_id = ${tripId} AND user_id = ${user};
         `)
             .then(dbRes => {
-                res.status(200).send('Trip updated!')
+                res.status(200).send('Trip completed!')
             })
+    },
+    returnCompletedTrips: (req, res) => {
+        let userId = req.params.trip
+        console.log(userId)
+
+        sequelize.query(`
+            SELECT city, state, country, num_of_days, activities, trip_id FROM trip
+                WHERE user_id = ${userId} AND completed = true
+        `) 
+        .then(dbRes => {
+            res.status(200).send(dbRes[0])
+        })
     }
 }
