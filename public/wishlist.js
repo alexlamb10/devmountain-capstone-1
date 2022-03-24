@@ -138,6 +138,7 @@ function filter() {
     axios.get(`${baseURL}/filteredTrips/?user=${user}&complete=${completed}&filter=${option.value}`)
     .then(res => {
         display(res.data)
+        option.value= 'Select'
     })
 }
 
