@@ -48,6 +48,7 @@ function display(items){
 //Get trip info
 function traveledList() {
     let user = localStorage.getItem('userId')
+    completedTripSection.innerHTML = ''
     
     axios.get(`${baseURL}/completedTrips/${user}`)
     .then(res => {
@@ -58,6 +59,7 @@ function traveledList() {
             let noTrip = document.createElement('h3')
 
             noTrip.textContent = `No trips to display, Let's go travel!`
+            noTrip.className = 'no-trip'
 
             completedTripSection.appendChild(noTrip)
         }

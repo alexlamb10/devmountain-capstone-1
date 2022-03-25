@@ -57,6 +57,8 @@ table {
     top: 0;
     left: -100%;
     background-image: url('sideWorldMap.jpg');
+    background-repeat: no-repeat;
+    background-size: auto 100%;
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 60px;
@@ -66,14 +68,14 @@ table {
     padding: 8px 8px 8px 32px;
     text-decoration: none;
     font-size: 22px;
-    color: white;
+    color: #4d908e;
     font-weight: bold;
     display: block;
     transition: 0.3s;
 }
 a:hover{
     transform: scale(1.1);
-    color: #073B46;
+    color: #277DA1;
 }
 
 .sideNav .closeBtn {
@@ -87,6 +89,7 @@ a:hover{
 
 #sideBarBtn {
     position: absolute;
+    cursor: pointer;
     top: 0;
     left: 0;
     padding: 1vh;
@@ -100,8 +103,9 @@ a:hover{
     font-size: 25pt;
     justify-content: center;
     width: 30%;
-    border-bottom: 1px solid #073B46;
-    color: #073B46;
+    border-bottom: 2px solid #277DA1;
+    color: #277DA1;
+    font-weight: bold;
 }
 
 body{
@@ -109,11 +113,16 @@ body{
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    background-color: beige;
+    background-color: #FDF9F0;
 }
 
-#create-profile-text{
+.create-profile-text{
     margin-top: 15vh;
+}
+
+.create-profile-text, .login-profile-text, .no-trip {
+    color: #277DA1;
+    font-weight: bold;
 }
 
 .log-in-boxes {
@@ -142,17 +151,16 @@ body{
 }
 h3 {
     margin: 2vh;
-    color:#073B46;
     font-size: 22px;
 }
 input, #submit-profile, #log-in-btn, #submit-new-trip{
     margin: 1vh;
-    background-color: beige;
     border-radius: 5px;
 }
 
 button{
     cursor: pointer;
+    background-color: #FDF9F0;
 }
 button:hover{
     transform: scale(.9);
@@ -166,7 +174,8 @@ button:hover{
 }
 #submit-filter, #filter{
     margin: 1vh;
-    background-color: rgb(39, 104, 117);
+    background-color: #90BE6D;
+    border-color: #90BE6D;
     color: beige;
     border-radius: 5px;
 }
@@ -188,17 +197,12 @@ button:hover{
     width: 85%;
     text-align: center; 
     justify-content: center;
-    color: beige;   
+    color: #F8EFD7;   
     margin-top: 3vh;
 }
 
-.displayRows > button{
-    background-color: beige;
-    
-}
-
 #city-display {
-    color: beige;
+    color: #FDF9F0;
 }
 
 .hide{    
@@ -206,7 +210,7 @@ button:hover{
 }
 
 .show {
-    background-color: rgb(39, 104, 117);
+    background-color: #F9844A;
     display: flex;
     height: auto;
     min-height: 9vh;
@@ -216,12 +220,10 @@ button:hover{
     border-bottom: 1px solid white;
     border-bottom-right-radius: 10px ;
     border-bottom-left-radius: 10px;
-    
+    color:#FDF9F0    
 }
 
-.displayRows{
-    background-color: rgba(7, 59, 70, 80%)
-}
+
 
 .displayRows {
     height: auto;
@@ -232,6 +234,7 @@ button:hover{
     border-bottom: 1px solid white;
     border-bottom-right-radius: 10px ;
     border-bottom-left-radius: 10px;
+    background-color: #4d908e;
 }
 
 #plan {

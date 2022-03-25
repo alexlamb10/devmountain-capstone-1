@@ -50,6 +50,7 @@ function display(items){
 //Get trip info
 function wishlist() {
     let user = localStorage.getItem('userId')
+    tripSection.innerHTML = ''
     
     axios.get(`${baseURL}/trips/${user}`)
     .then(res => {
@@ -59,6 +60,7 @@ function wishlist() {
             let noTrip = document.createElement('h3')
 
             noTrip.textContent = `No trips to display, Let's get planning!`
+            noTrip.className = 'no-trip'
 
             tripSection.appendChild(noTrip)
         }
