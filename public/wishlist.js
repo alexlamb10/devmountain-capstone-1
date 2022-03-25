@@ -25,18 +25,18 @@ function display(items){
         secondRow.id = `hide${count}`
         
         row.innerHTML = `
-         <button onclick="showMore(event)" id="${count}" >&vArr;</button> 
-        <h3 id="city-display">${city}</h3>
-        <button onclick="deleteTrip(event)" id="${trip_id}">Delete</button>
-        <button onclick="markAsComplete(event)" id="${trip_id}">Mark as complete</button>
+        <span id="arrow-wish"><button onclick="showMore(event)" id="${count}" >&vArr;</button></span> 
+        <span id="name-wish"><h3 id="city-display">${city}</h3></span>
+        <span id="delete-wish"><button onclick="deleteTrip(event)" id="${trip_id}">Delete</button></span>
+        <span id ="complete-wish"><button onclick="markAsComplete(event)" id="${trip_id}">Mark as complete</button></span>
         `
         
         secondRow.innerHTML = `
-        <h5>State: ${state}</h5>
-        <h5>Country: ${country}</h5>
-        <h5>Trip length: ${num_of_days} days</h5>
-        <h5 id="plan">Plan: ${activities}</h5>
-        <h5>my estimated cost: ${est_cost}</h5> `
+        <h5 class="details-wish">State: ${state}</h5>
+        <h5 class="details-wish">Country: ${country}</h5>
+        <h5 class="details-wish">Trip length: ${num_of_days} days</h5>
+        <h5 class="details-wish">Plan: ${activities}</h5>
+        <h5 class="details-wish">my estimated cost: ${est_cost}</h5> `
 
 
         tripSection.appendChild(row)

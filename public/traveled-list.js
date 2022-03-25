@@ -26,15 +26,15 @@ function display(items){
         completedSecondRow.id = `hide${count}`
 
         completedRow.innerHTML = `
-        <button onclick="showMore(event)" id="${count}">&vArr;</button>
-        <h3 id="city-display">${city}</h3>
-        <button onclick="deleteTrip(event)" id="${trip_id}">Delete</button>
+        <span id="arrow-traveled"><button onclick="showMore(event)" id="${count}">&vArr;</button></span>
+        <span id="city-name-traveled"><h3 id="city-display">${city}</h3></span>
+        <span id="delete-trip-traveled"><button onclick="deleteTrip(event)" id="${trip_id}">Delete</button></span>
         `
         completedSecondRow.innerHTML = `
-        <h5>State: ${state}</h5>
-        <h5>Country: ${country}</h5>
-        <h5>Trip length: ${num_of_days} days</h5>
-        <h5 id="plan">Plan: ${activities}</h5>
+        <h5 class="details-travel">State: ${state}</h5>
+        <h5 class="details-travel">Country: ${country}</h5>
+        <h5 class="details-travel">Trip length: ${num_of_days} days</h5>
+        <h5 class="details-travel">Plan: ${activities}</h5>
         `
 
         completedTripSection.appendChild(completedRow)

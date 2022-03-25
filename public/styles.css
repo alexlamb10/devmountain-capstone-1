@@ -237,7 +237,36 @@ button:hover{
     background-color: #4d908e;
 }
 
-#plan {
+.details-wish {
     margin: 1vh 0;
     width: 20%;
+}
+
+.details-travel {
+    margin: 1%;
+    width: 25%;
+}
+
+#delete-trip-traveled{
+    width: 20%;
+}
+
+#city-name-traveled{
+    width: 60%;
+}
+
+#arrow-traveled{
+    width: 20%;
+}
+
+#complete-wish, #delete-wish {
+    width: 20%;
+}
+
+#name-wish {
+    width: 50%;
+}
+
+#arrow-wish{
+    width: 10%;
 }
