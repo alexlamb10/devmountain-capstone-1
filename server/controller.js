@@ -63,7 +63,7 @@ module.exports = {
 
         `)
         //Push message to front end stating account was created
-        res.status(200).send(`Account creation comlete! Please sign in.`)
+        res.status(200).send(`Account creation complete! Please sign in.`)
     },
     
     logInUser: (req, res) => {
@@ -85,7 +85,7 @@ module.exports = {
                         res.sendStatus(400)
                     } else {
                         //Send message and user_id to store on front end
-                        res.status(200).send({message: `Welcome ` + user,
+                        res.status(200).send({message: `Welcome ` + user + '!',
                                                 userId: userinfo.user_id})
                     }
                 })
