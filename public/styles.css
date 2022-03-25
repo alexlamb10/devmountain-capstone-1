@@ -127,10 +127,16 @@ body{
     background-image: url('worldMap.jpg');
 }
 
+#password-message{
+    position: relative;
+}
+
 #password-req{
     color:#073B46;
     background-color: beige;
-    width: 45%;
+    position: absolute;
+    bottom: 30px;
+    width: 100%;
     border-radius: 20px;
     text-align: center;
 }
@@ -195,17 +201,31 @@ button:hover{
     color: beige;
 }
 
-.hide{
+.hide{    
+    display: none;
+}
+
+.show {
     background-color: rgb(39, 104, 117);
+    display: flex;
+    height: auto;
+    min-height: 9vh;
+    transition: height 4s;
+    align-items: center;
+    justify-content: space-evenly;
+    border-bottom: 1px solid white;
+    border-bottom-right-radius: 10px ;
+    border-bottom-left-radius: 10px;
+    
 }
 
 .displayRows{
     background-color: rgba(7, 59, 70, 80%)
 }
 
-.displayRows, .hide {
+.displayRows {
     height: auto;
-    min-height: 7vh;
+    min-height: 9vh;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
@@ -217,8 +237,4 @@ button:hover{
 #plan {
     margin: 1vh 0;
     width: 20%;
-}
-
-.show{
-    display: flex;
 }

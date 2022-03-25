@@ -37,8 +37,6 @@ function display(items){
         <h5 id="plan">Plan: ${activities}</h5>
         `
 
-        completedSecondRow.style.display = 'none'
-
         completedTripSection.appendChild(completedRow)
         completedTripSection.appendChild(completedSecondRow)
         count++
@@ -74,11 +72,8 @@ function showMore(event) {
 
     let showDiv = document.getElementById(`hide${button}`)
 
-    if(showDiv.style.display === 'none'){
-        showDiv.style.display = 'flex'
-    }else{
-        showDiv.style.display = 'none'
-    }
+    showDiv.classList.toggle('show')
+    showDiv.classList.toggle('hide')
 
 }
 

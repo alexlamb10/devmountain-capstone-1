@@ -25,7 +25,7 @@ function display(items){
         secondRow.id = `hide${count}`
         
         row.innerHTML = `
-         <button onclick="showMore(event)" id="${count}">&vArr;</button> 
+         <button onclick="showMore(event)" id="${count}" >&vArr;</button> 
         <h3 id="city-display">${city}</h3>
         <button onclick="deleteTrip(event)" id="${trip_id}">Delete</button>
         <button onclick="markAsComplete(event)" id="${trip_id}">Mark as complete</button>
@@ -38,7 +38,6 @@ function display(items){
         <h5 id="plan">Plan: ${activities}</h5>
         <h5>my estimated cost: ${est_cost}</h5> `
 
-        secondRow.style.display = 'none'
 
         tripSection.appendChild(row)
         tripSection.appendChild(secondRow)
@@ -98,12 +97,8 @@ function showMore(event) {
 
     let showDiv = document.getElementById(`hide${button}`)
 
-    if(showDiv.style.display === 'none'){
-        
-        showDiv.style.display = 'flex'
-    }else{
-        showDiv.style.display = 'none'
-    }
+    showDiv.classList.toggle('show')
+    showDiv.classList.toggle('hide')
 
 }
 
