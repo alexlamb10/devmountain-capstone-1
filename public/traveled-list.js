@@ -42,7 +42,7 @@ function display(items){
             completedRow.innerHTML = `
             <span id="arrow-traveled"><button onclick="showMore(event)" id="${count}">&vArr;</button></span>
             <span id="city-name-traveled"><h3 id="city-display">${city}</h3></span>
-            <span id="add-pics"><button onclick="addPics(event)" id="${trip_id}">Add Pictures</button></span>
+            <span id="add-pics"><button onclick="addPics(event)" class="pic-btn" id="${trip_id}">Add Pictures</button></span>
             <span id="delete-trip-traveled"><button onclick="deleteTrip(event)" id="${trip_id}">Delete</button></span>
             `
             completedSecondRow.innerHTML = `
@@ -138,16 +138,22 @@ let cancel = document.getElementById('cancel')
 let submitPics = document.getElementById('save-pics')
 
 function addPics(event) {
+    let trip = event.target.id
+    console.log(trip)
+    localStorage.setItem('tripId', trip)
+
     picsSection.classList.toggle('show')
     picsSection.classList.toggle('hide')
 }
 
 function cancelPics() {
+    localStorage.removeItem('tripId')
     picsSection.classList.toggle('show')
     picsSection.classList.toggle('hide')
 }
 
 function savePicsToDatabase() {
+    localStorage.removeItem('tripId')
     picsSection.classList.toggle('show')
     picsSection.classList.toggle('hide')
 }
