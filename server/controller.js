@@ -43,14 +43,10 @@ module.exports = {
                 activities TEXT,
                 est_cost INT,
                 completed BOOLEAN,
+                pic_url text,
                 user_id INT REFERENCES users(user_id)                
             );
 
-            create table pictures (
-                pic_id SERIAL PRIMARY KEY,
-                pic_url text,
-                trip_id INT REFERENCES trip(trip_id)
-            );
         `).then(() => {
             console.log('DB seeded!')
             res.sendStatus(200)
@@ -142,7 +138,7 @@ module.exports = {
 
         //get completed trips from database using sequelize
         sequelize.query(`
-            SELECT city, state, country, num_of_days, activities, trip_id FROM trip
+            SELECT city, state, country, num_of_days, activities, trip_id, pic_url FROM trip
                 WHERE user_id = ${userId} AND completed = true
         `) 
         .then(dbRes => {
@@ -168,7 +164,7 @@ module.exports = {
         let info = req.query
         if(info.filter === 'Price ascending'){
             sequelize.query(`
-            SELECT city, state, country, num_of_days, activities, trip_id, est_cost FROM trip
+            SELECT city, state, country, num_of_days, activities, trip_id, est_cost, pic_url FROM trip
                 WHERE user_id = ${info.user} AND completed = ${info.complete}
                 ORDER BY est_cost
         `) 
@@ -177,7 +173,7 @@ module.exports = {
         })
         }else if(info.filter === 'Price descending'){
             sequelize.query(`
-            SELECT city, state, country, num_of_days, activities, trip_id, est_cost FROM trip
+            SELECT city, state, country, num_of_days, activities, trip_id, est_cost, pic_url FROM trip
                 WHERE user_id = ${info.user} AND completed = ${info.complete}
                 ORDER BY est_cost DESC
         `) 
@@ -186,7 +182,7 @@ module.exports = {
         })
         }else if(info.filter === 'Number of Days ascending'){
             sequelize.query(`
-            SELECT city, state, country, num_of_days, activities, trip_id, est_cost FROM trip
+            SELECT city, state, country, num_of_days, activities, trip_id, est_cost, pic_url FROM trip
                 WHERE user_id = ${info.user} AND completed = ${info.complete}
                 ORDER BY num_of_days 
         `) 
@@ -195,7 +191,7 @@ module.exports = {
         })
         }else if(info.filter === 'Number of Days descending'){
             sequelize.query(`
-            SELECT city, state, country, num_of_days, activities, trip_id, est_cost FROM trip
+            SELECT city, state, country, num_of_days, activities, trip_id, est_cost, pic_url FROM trip
                 WHERE user_id = ${info.user} AND completed = ${info.complete}
                 ORDER BY num_of_days DESC
         `) 
@@ -204,7 +200,7 @@ module.exports = {
         })
         }else if(info.filter === 'City A-Z'){
             sequelize.query(`
-            SELECT city, state, country, num_of_days, activities, trip_id, est_cost FROM trip
+            SELECT city, state, country, num_of_days, activities, trip_id, est_cost,, pic_url FROM trip
                 WHERE user_id = ${info.user} AND completed = ${info.complete}
                 ORDER BY city 
         `) 
@@ -213,9 +209,10 @@ module.exports = {
         })
         }else if(info.filter === 'City Z-A'){
             sequelize.query(`
-            SELECT city, state, country, num_of_days, activities, trip_id, est_cost FROM trip
+            SELECT city, state, country, num_of_days, activities, trip_id, est_cost, pic_url FROM trip
                 WHERE user_id = ${info.user} AND completed = ${info.complete}
                 ORDER BY city DESC
+
         `) 
         .then(dbRes => {
             res.status(200).send(dbRes[0])

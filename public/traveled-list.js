@@ -17,7 +17,7 @@ function display(items){
     count=1
     completedTripSection.innerHTML = ''
     for(let i = 0; i < items.length; i++){
-        let {city, state, country, num_of_days, activities, trip_id} = items[i]
+        let {city, state, country, num_of_days, activities, trip_id, pic_url} = items[i]
         let completedRow = document.createElement('div')   
         let completedSecondRow = document.createElement('div')  
 
@@ -25,18 +25,34 @@ function display(items){
         completedSecondRow.className = 'hide'
         completedSecondRow.id = `hide${count}`
 
-        completedRow.innerHTML = `
-        <span id="arrow-traveled"><button onclick="showMore(event)" id="${count}">&vArr;</button></span>
-        <span id="city-name-traveled"><h3 id="city-display">${city}</h3></span>
-        <span id="add-pics"><button onclick="addPics(event)" id="${trip_id}">Add Pictures</button></span>
-        <span id="delete-trip-traveled"><button onclick="deleteTrip(event)" id="${trip_id}">Delete</button></span>
-        `
-        completedSecondRow.innerHTML = `
-        <h5 class="details-travel">State: ${state}</h5>
-        <h5 class="details-travel">Country: ${country}</h5>
-        <h5 class="details-travel">Trip length: ${num_of_days} days</h5>
-        <h5 class="details-travel">Plan: ${activities}</h5>
-        `
+        if(pic_url){
+            completedRow.innerHTML = `
+            <span id="arrow-traveled"><button onclick="showMore(event)" id="${count}">&vArr;</button></span>
+            <span id="city-name-traveled"><h3 id="city-display">${city}</h3></span>
+            <span id="delete-trip-traveled"><button onclick="deleteTrip(event)" id="${trip_id}">Delete</button></span>
+            `
+            completedSecondRow.innerHTML = `
+            <h5 class="details-post-travel">State: ${state}</h5>
+            <h5 class="details-post-travel">Country: ${country}</h5>
+            <h5 class="details-post-travel">Trip length: ${num_of_days} days</h5>
+            <h5 class="plan-post-travel">Plan: ${activities}</h5>
+            <span class="display-pic"><img src="${pic_url}"></span>
+            `
+        } else{
+            completedRow.innerHTML = `
+            <span id="arrow-traveled"><button onclick="showMore(event)" id="${count}">&vArr;</button></span>
+            <span id="city-name-traveled"><h3 id="city-display">${city}</h3></span>
+            <span id="add-pics"><button onclick="addPics(event)" id="${trip_id}">Add Pictures</button></span>
+            <span id="delete-trip-traveled"><button onclick="deleteTrip(event)" id="${trip_id}">Delete</button></span>
+            `
+            completedSecondRow.innerHTML = `
+            <h5 class="details-post-travel">State: ${state}</h5>
+            <h5 class="details-post-travel">Country: ${country}</h5>
+            <h5 class="details-post-travel">Length: ${num_of_days} days</h5>
+            <h5 class="plan-post-travel">Plan: ${activities}</h5>
+            <h5 class="display-pic">No Picture!</h5>
+            `
+        }
 
         completedTripSection.appendChild(completedRow)
         completedTripSection.appendChild(completedSecondRow)
