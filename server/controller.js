@@ -11,6 +11,14 @@ const sequelize = new Sequelize(process.env.CONNECTION_STRING, {
     } 
 })
 
+// s3
+// import entire SDK
+var AWS = require('aws-sdk');
+// import AWS object without services
+var AWS = require('aws-sdk/global');
+// import individual service
+var S3 = require('aws-sdk/clients/s3');
+
 let users = []
 
 module.exports = {
@@ -35,10 +43,13 @@ module.exports = {
                 activities TEXT,
                 est_cost INT,
                 completed BOOLEAN,
-                start_date DATE,
-                end_date DATE,
-                user_id INT REFERENCES users(user_id)
-                
+                user_id INT REFERENCES users(user_id)                
+            );
+
+            create table pictures (
+                pic_id SERIAL PRIMARY KEY,
+                pic_url text,
+                trip_id INT REFERENCES trip(trip_id)
             );
         `).then(() => {
             console.log('DB seeded!')

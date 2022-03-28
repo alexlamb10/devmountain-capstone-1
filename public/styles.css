@@ -251,22 +251,22 @@ button:hover{
     width: 20%;
 }
 
-#city-name-traveled{
-    width: 60%;
-}
-
-#arrow-traveled{
+#complete-wish, #delete-wish, #delete-trip-traveled, #add-pics {
     width: 20%;
 }
 
-#complete-wish, #delete-wish {
-    width: 20%;
-}
-
-#name-wish {
+#name-wish, #city-name-traveled {
     width: 50%;
 }
 
-#arrow-wish{
+#arrow-wish, #arrow-traveled{
     width: 10%;
+}
+
+#add-pictures{
+    background-color: #277DA1;
+    height: auto;
+    width: 60%;
+    position: fixed;
+    top: 25vh;
 }

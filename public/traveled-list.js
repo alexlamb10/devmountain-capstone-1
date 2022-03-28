@@ -28,6 +28,7 @@ function display(items){
         completedRow.innerHTML = `
         <span id="arrow-traveled"><button onclick="showMore(event)" id="${count}">&vArr;</button></span>
         <span id="city-name-traveled"><h3 id="city-display">${city}</h3></span>
+        <span id="add-pics"><button onclick="addPics(event)" id="${trip_id}">Add Pictures</button></span>
         <span id="delete-trip-traveled"><button onclick="deleteTrip(event)" id="${trip_id}">Delete</button></span>
         `
         completedSecondRow.innerHTML = `
@@ -115,3 +116,25 @@ function filter() {
 }
 
 submitOption.addEventListener('click',filter)
+
+let picsSection = document.getElementById('add-pictures')
+let cancel = document.getElementById('cancel')
+let submitPics = document.getElementById('save-pics')
+
+function addPics(event) {
+    picsSection.classList.toggle('show')
+    picsSection.classList.toggle('hide')
+}
+
+function cancelPics() {
+    picsSection.classList.toggle('show')
+    picsSection.classList.toggle('hide')
+}
+
+function savePicsToDatabase() {
+    picsSection.classList.toggle('show')
+    picsSection.classList.toggle('hide')
+}
+
+cancel.addEventListener('click', cancelPics)
+submitPics.addEventListener('click', savePicsToDatabase)
