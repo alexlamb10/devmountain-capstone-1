@@ -40,7 +40,7 @@ function display(items){
             completedSecondRow.innerHTML = `
             <h5 class="details-post-travel">State: ${state}</h5>
             <h5 class="details-post-travel">Country: ${country}</h5>
-            <h5 class="details-post-travel">Trip length: ${num_of_days} days</h5>
+            <h5 class="details-post-travel">Length: ${num_of_days} days</h5>
             <h5 class="plan-post-travel">Plan: ${activities}</h5>
             <span class="display-pic"><img class="single-pic" src="${pic_url}"></span>
             `

@@ -34,7 +34,7 @@ function display(items){
         secondRow.innerHTML = `
         <h5 class="details-wish">State: ${state}</h5>
         <h5 class="details-wish">Country: ${country}</h5>
-        <h5 class="details-wish">Trip length: ${num_of_days} days</h5>
+        <h5 class="details-wish">Length: ${num_of_days} days</h5>
         <h5 class="details-wish">Plan: ${activities}</h5>
         <h5 class="details-wish">my estimated cost: ${est_cost}</h5> `
 
