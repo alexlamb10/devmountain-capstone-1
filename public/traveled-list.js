@@ -1,4 +1,10 @@
 const baseURL = 'http://localhost:4400'
+let fileInfo = {
+    file: undefined,
+    fileName: undefined,
+    fileType: undefined,
+    img: undefined,
+}
 
 //Check for user_id in order to stay on page
 function checkForLogin() {
@@ -42,7 +48,9 @@ function display(items){
             completedRow.innerHTML = `
             <span id="arrow-traveled"><button onclick="showMore(event)" id="${count}">&vArr;</button></span>
             <span id="city-name-traveled"><h3 id="city-display">${city}</h3></span>
-            <span id="add-pics"><button onclick="addPics(event)" class="pic-btn" id="${trip_id}">Add Pictures</button></span>
+            <span id="add-pics"><label for="file-${trip_id}">Add Picture</label>
+            <input onChange="handlePhoto(event)" type="file" class="inputFile" id="file-${trip_id}">
+            <button onclick="addPics(${trip_id})" class="save-photo">Save</button></span>
             <span id="delete-trip-traveled"><button onclick="deleteTrip(event)" id="${trip_id}">Delete</button></span>
             `
             completedSecondRow.innerHTML = `
@@ -133,30 +141,35 @@ function filter() {
 
 submitOption.addEventListener('click',filter)
 
-let picsSection = document.getElementById('add-pictures')
-let cancel = document.getElementById('cancel')
-let submitPics = document.getElementById('save-pics')
-
-function addPics(event) {
-    let trip = event.target.id
-    console.log(trip)
-    localStorage.setItem('tripId', trip)
-
-    picsSection.classList.toggle('show')
-    picsSection.classList.toggle('hide')
+async function addPics(tripId) {
+    console.log({tripId, fileInfo})
+    const data = await axios.post(`${baseURL}/api/s3`, fileInfo)
+    console.log({data})
+    if(data.status !== 200){
+        return 
+    }else {
+        axios.put(`${baseURL}/tripPic`, {tripId, pictureURL: data.data.Location})
+        .then(res => {
+            display(res.data)
+        })
+    }
 }
 
-function cancelPics() {
-    localStorage.removeItem('tripId')
-    picsSection.classList.toggle('show')
-    picsSection.classList.toggle('hide')
-}
 
-function savePicsToDatabase() {
-    localStorage.removeItem('tripId')
-    picsSection.classList.toggle('show')
-    picsSection.classList.toggle('hide')
-}
+function handlePhoto(event) {
+    console.log({event})
 
-cancel.addEventListener('click', cancelPics)
-submitPics.addEventListener('click', savePicsToDatabase)
+    const reader = new FileReader()
+    const file = event.target.files[0]
+    reader.onload = photo => {
+        fileInfo = {
+            file: photo.target.result,
+            fileName: file.name,
+            fileType: file.type,
+            img: ''
+        }
+
+    }
+    reader.readAsDataURL(file)
+
+}

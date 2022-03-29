@@ -11,14 +11,6 @@ const sequelize = new Sequelize(process.env.CONNECTION_STRING, {
     } 
 })
 
-// s3
-// import entire SDK
-var AWS = require('aws-sdk');
-// import AWS object without services
-var AWS = require('aws-sdk/global');
-// import individual service
-var S3 = require('aws-sdk/clients/s3');
-
 let users = []
 
 module.exports = {
@@ -218,5 +210,18 @@ module.exports = {
             res.status(200).send(dbRes[0])
         })
         }
+    },
+    addPicture: (req, res) => {
+        const picInfo = req.body
+        const {tripId, pictureURL} = picInfo
+        console.log({picInfo})
+
+        sequelize.query(`
+            UPDATE trip
+            SET pic_url = '${pictureURL}'
+            WHERE trip_id = ${tripId}
+        `).then(dbRes => {
+            res.status(200).send(dbRes[0])
+        })
     }
 }
