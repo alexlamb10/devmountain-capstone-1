@@ -133,7 +133,17 @@ body{
     width: 40%;
     border: 1px solid;
     border-radius: 10px;
-    background-image: url('worldMap.jpg');
+}
+
+#create-profile{
+    background-image: url('passport1.jpg');
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+#log-in {
+    background-image: url('passport2.jpg');
+    background-repeat: no-repeat;
+    background-size: 100%;
 }
 
 #password-message{
@@ -282,4 +292,8 @@ button:hover{
 .display-pic {
     margin: 2vh;
     width: 45%;
+}
+
+.single-pic{
+    max-width: 100%;
 }
