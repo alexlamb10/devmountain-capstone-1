@@ -1,4 +1,4 @@
-const baseURL = 'http://localhost:4400'
+const baseURL = ''
 let fileInfo = {
     file: undefined,
     fileName: undefined,
@@ -10,7 +10,7 @@ let fileInfo = {
 function checkForLogin() {
     const userId = localStorage.getItem('userId');
     if (!userId) {
-        window.location.href = '/public/log-in.html'
+        window.location.href = './index.html'
     }
 }
 

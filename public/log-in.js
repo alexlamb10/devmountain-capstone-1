@@ -9,7 +9,7 @@ let loginUsername = document.getElementById('log-in-username')
 let loginPassword = document.getElementById('log-in-password')
 let loginBtn = document.getElementById('log-in-btn')
 
-const baseURL = 'http://localhost:4400'
+const baseURL = ''
 // create user log in
 
 function createUser (){
@@ -63,7 +63,7 @@ function logIn () {
 
             localStorage.setItem('userId', res.data.userId)
 
-            window.location.href = "/public/home.html"
+            window.location.href = "./home.html"
             
         })
         .catch(err => {

@@ -13,7 +13,7 @@ let logOut = document.querySelector('.log-out')
 function logUserOut () {
     console.log('button works');
     localStorage.removeItem('userId')
-    window.location.href = '/public/log-in.html'
+    window.location.href = './index.html'
 }
 
 logOut.addEventListener('click', logUserOut)

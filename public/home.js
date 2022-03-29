@@ -1,4 +1,4 @@
-const baseURL = 'http://localhost:4400'
+const baseURL = ''
 
 // Home.html, get users information for their trip and send to back to add to database
 let cityInput = document.getElementById('city')
@@ -18,7 +18,7 @@ let messageBody = document.getElementById('return-message')
 function checkForLogin() {
     const userId = localStorage.getItem('userId');
     if (!userId) {
-        window.location.href = '/public/log-in.html'
+        window.location.href = './index.html'
     }
 }
 

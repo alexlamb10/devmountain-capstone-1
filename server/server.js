@@ -2,7 +2,7 @@ const express = require('express')
 const cors = require('cors')
 const path = require('path')
 require('dotenv').config()
-const{SERVER_PORT} = process.env
+const SERVER_PORT = process.env.PORT || process.env.SERVER_PORT
 const {AWS_ACCESS_KEY_PUBLIC, AWS_ACCESS_KEY_PRIVATE, AWS_REGION, S3_BUCKET} = process.env
 
 const AWS = require('aws-sdk')
@@ -22,7 +22,7 @@ let {createLogIn, logInUser, seed, createTrip, returnPlannedTrips, markComplete,
 app.use(express.json())
 app.use(cors())
 
-app.use(express.static(path.join(__dirname, "../public")))
+app.use('/', express.static(path.join(__dirname, "../public")))
 
 
 app.post('/api/s3', (req, res) => {

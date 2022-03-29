@@ -1,10 +1,10 @@
-const baseURL = 'http://localhost:4400'
+const baseURL = ''
 
 //Check for user_id in order to stay on page
 function checkForLogin() {
     const userId = localStorage.getItem('userId');
     if (!userId) {
-        window.location.href = '/public/log-in.html'
+        window.location.href = './index.html'
     }
 }
 
