@@ -192,7 +192,7 @@ module.exports = {
         })
         }else if(info.filter === 'City A-Z'){
             sequelize.query(`
-            SELECT city, state, country, num_of_days, activities, trip_id, est_cost,, pic_url FROM trip
+            SELECT city, state, country, num_of_days, activities, trip_id, est_cost, pic_url FROM trip
                 WHERE user_id = ${info.user} AND completed = ${info.complete}
                 ORDER BY city 
         `) 
