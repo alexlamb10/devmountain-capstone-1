@@ -211,7 +211,7 @@ button:hover{
     margin-top: 3vh;
 }
 
-#city-display {
+#city-display, #add-pics {
     color: #FDF9F0;
 }
 
@@ -261,11 +261,19 @@ button:hover{
     width: 20%;
 }
 
-#complete-wish, #delete-wish, #delete-trip-traveled, #add-pics {
+#complete-wish, #delete-wish, #delete-trip-traveled {
     width: 20%;
 }
 
-#name-wish, #city-name-traveled {
+#add-pics {
+    width: 40%;
+}
+
+#city-name-traveled {
+    width: 30%;
+}
+
+#name-wish {
     width: 50%;
 }
 

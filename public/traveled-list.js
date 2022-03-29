@@ -150,7 +150,7 @@ async function addPics(tripId) {
     }else {
         axios.put(`${baseURL}/tripPic`, {tripId, pictureURL: data.data.Location})
         .then(res => {
-            display(res.data)
+            traveledList()
         })
     }
 }
