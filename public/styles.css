@@ -68,7 +68,7 @@ table {
     padding: 8px 8px 8px 32px;
     text-decoration: none;
     font-size: 22px;
-    color: #4d908e;
+    color: #0c1414;
     font-weight: bold;
     display: block;
     transition: 0.3s;
@@ -163,6 +163,11 @@ h3 {
     margin: 2vh;
     font-size: 22px;
 }
+
+input {
+    width: 10vw;
+}
+
 input, #submit-profile, #log-in-btn, #submit-new-trip{
     margin: 1vh;
     border-radius: 5px;
