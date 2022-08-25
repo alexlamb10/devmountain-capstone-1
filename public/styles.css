@@ -142,9 +142,9 @@ body{
 }
 
 #create-profile{
-    background-image: url('passport1.jpg');
+    background-image: url('newFlag.jpg');
     background-repeat: no-repeat;
-    background-size: 100%;
+    background-size: fill;
 }
 
 .hide-menu {
@@ -158,7 +158,7 @@ body{
 }
 
 #log-in {
-    background-image: url('passport2.jpg');
+    background-image: url('newFlag.jpg');
     background-repeat: no-repeat;
     background-size: 100%;
 }
@@ -172,7 +172,7 @@ body{
     background-color: #FDF9F0;
     position: absolute;
     bottom: 30px;
-    width: 100%;
+    width: 120%;
     border-radius: 20px;
     text-align: center;
 }

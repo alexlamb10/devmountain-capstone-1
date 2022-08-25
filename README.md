@@ -20,4 +20,4 @@ You can then navigate to other pages to view your trips you have added, as well 
 
 
 
-Deployed Heroku site: https://f19-capstone-project-1.herokuapp.com/
+Deployed Heroku site: https://trip-planner-app-al.herokuapp.com/
