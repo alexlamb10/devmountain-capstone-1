@@ -93,6 +93,12 @@ function logIn() {
       localStorage.setItem("userId", res.data.userId);
 
       window.location.href = "./home.html";
+      createAccBox?.classList.remove("hide-menu");
+      createAccTitle?.classList.remove("hide-menu");
+      hasAccount?.classList.remove("hide-menu");
+      logInBox?.classList.add("hide-menu");
+      logInTitle?.classList.add("hide-menu");
+      createAccount?.classList.add("hide-menu");
     })
     .catch((err) => {
       let error = err.message;
