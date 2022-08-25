@@ -16,7 +16,7 @@
     <span onclick="openNav()" id="sideBarBtn">&#9776;</span>
 
 
-    <h3 class="create-profile-text">Create an Account</h3>
+    <h3 class="create-profile-text" id="profile">Create an Account</h3>
     <section id="create-profile" class="log-in-boxes one">
         <input type="text" id="name" placeholder="Your name">
         <input type="text" id="username" placeholder="Enter username">
@@ -27,14 +27,17 @@
         <input type="password" id="confirm-password" placeholder="Confirm password">
         <button id="submit-profile">Submit</button>
     </section>
+    <p id="has-account">Already have an account? Log in!</p>
 
 
-    <h3 class="login-profile-text">Log in</h3>
-    <section class="log-in-boxes two" id="log-in">
+
+    <h3 id="log" class="login-profile-text hide-menu">Log in</h3>
+    <section class="log-in-boxes two hide-menu" id="log-in">
         <input type="text" id="log-in-username" placeholder="Enter Username">
         <input type="password" id="log-in-password" placeholder="Enter password">
         <button id="log-in-btn">Log in</button>
     </section>
+    <p id="create-account" class="hide-menu">Create New Account</p>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="./main.js"></script>
     <script src="./log-in.js"></script>

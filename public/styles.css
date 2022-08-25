@@ -56,7 +56,7 @@ table {
     z-index: 1;
     top: 0;
     left: -100%;
-    background-image: url('sideWorldMap.jpg');
+    background-color: #f4ecdc;
     background-repeat: no-repeat;
     background-size: auto 100%;
     overflow-x: hidden;
@@ -73,9 +73,11 @@ table {
     display: block;
     transition: 0.3s;
 }
+
 a:hover{
     transform: scale(1.1);
-    color: #277DA1;
+    color: rgba(23, 20, 20);
+    border-radius: 5px;
 }
 
 .sideNav .closeBtn {
@@ -140,6 +142,17 @@ body{
     background-repeat: no-repeat;
     background-size: 100%;
 }
+
+.hide-menu {
+    display: none;
+}
+
+#has-account, #create-account {
+    color: purple;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
 #log-in {
     background-image: url('passport2.jpg');
     background-repeat: no-repeat;
