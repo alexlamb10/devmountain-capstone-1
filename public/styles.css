@@ -160,7 +160,7 @@ body{
 #log-in {
     background-image: url('newFlag.jpg');
     background-repeat: no-repeat;
-    background-size: 100%;
+    background-size: fill;
 }
 
 #password-message{
